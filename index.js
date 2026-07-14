@@ -13,10 +13,10 @@ let card = {
 
 async function menu() {
     console.log("1. Tarik saldo \n2. Setor saldo \n3. Keluar");
-    let c = await rl.question("Pilih menu.. : ", function(choose) { //T_T
-    switch(choose) { //INI UDAH KALI, COBA RUN LG, COBA RUN LAGI. JANGAN DI BLOK SEMUA DONG! HMP
+    let c = await rl.question("Pilih menu.. : ") //T_T
+    switch(c) { //INI UDAH KALI, COBA RUN LG, COBA RUN LAGI. JANGAN DI BLOK SEMUA DONG! HMP
         case "1":
-            let tarik = rl.question("Masukan jumlah saldo yang ingin ditarik : ");
+            let tarik = await rl.question("Masukan jumlah saldo yang ingin ditarik : ");
             if (isNaN(tarik)) {
               console.log("Input harus berupa angka");
               menu();
@@ -32,23 +32,24 @@ async function menu() {
             }
             break;
         case "2":
-            let setor = rl.question("Masukan jumlah saldo yang ingin disetorkan : ");
-            if (isNaN(setor)) {
-              console.log("Mohon masukan saldo yang akan ditarik berupa angka"); //I DONT EVEN KNOW IF THIS WOULD WORK BUT LETS SEE
+            let transfer = await rl.question("Masukan jumlah saldo yang ingin disetorkan : ");
+            if (isNaN(transfer)) {
+              console.log("Mohon masukan saldo yang akan ditransfer berupa angka"); //I DONT EVEN KNOW IF THIS WOULD WORK BUT LETS SEE
             }
             else {
-                console.log(card.id + setor)
+                console.log(`Saldo sebanyak ${transfer} berhasil ditransfer`)
+                console.log("Sisa saldo di rekening anda :", card.saldo - transfer)
+                menu()
             }
             break;//BINGUNG BANGET AGASTA
         case "3":
             console.clear();
             console.log("Terima kasih telah menggunakan ATM kami");
-            break;
             rl.close()
+            break;
     }
-    rl.close()
-   });
-}
+   };
+
 async function jawa() {
   let b = await rl.question("Masukan pin anda..\n")
   if (b == card.pw) {
@@ -71,8 +72,9 @@ let a = await rl.question("Tekan p untuk masukan kartu..\n"); //biar masukin kar
 if (a === "p") {
   console.log("Kartu dimasukan");
   console.clear()
-  jawa();
+  await jawa();
 }
+
 // masih follow
 // gw mencet apaan ampe ngefollow begini, coba run lagi rip qi, i mau main, hehe
 // eror syid, di bagian tarik ada await
@@ -84,4 +86,4 @@ if (a === "p") {
 // mengapa begini ;-
 //coba tanya sajat:)
 //yey
-//msh follow ya apa udh ngga, follow aoa bobo yu, bole, besok tanya kk ny aaj
+//msh follow ya apa udh ngga, follow aoa bobo yu, bole, besok tanya kk ny
