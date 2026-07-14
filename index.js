@@ -12,7 +12,7 @@ let card = {
 };
 
 async function menu() {
-    console.log("1. Tarik saldo \n2. Setor saldo \n3. Keluar");
+    console.log("1. Tarik saldo \n2. transfer dana \n3. Keluar");
     let c = await rl.question("Pilih menu.. : ") //T_T
     switch(c) { //INI UDAH KALI, COBA RUN LG, COBA RUN LAGI. JANGAN DI BLOK SEMUA DONG! HMP
         case "1":
@@ -32,20 +32,25 @@ async function menu() {
             }
             break;
         case "2":
-            let transfer = await rl.question("Masukan jumlah saldo yang ingin disetorkan : ");
+            let transfer = await rl.question("Masukan jumlah saldo yang ingin ditransfer : ");
             if (isNaN(transfer)) {
               console.log("Mohon masukan saldo yang akan ditransfer berupa angka"); //I DONT EVEN KNOW IF THIS WOULD WORK BUT LETS SEE
             }
             else {
                 console.log(`Saldo sebanyak ${transfer} berhasil ditransfer`)
                 console.log("Sisa saldo di rekening anda :", card.saldo - transfer)
-                menu()
+                menu();
             }
             break;//BINGUNG BANGET AGASTA
         case "3":
             console.clear();
             console.log("Terima kasih telah menggunakan ATM kami");
-            rl.close()
+            rl.close();
+            break;
+        default:
+            console.clear();
+            console.log("MASUKKAN ANGKA YANG SESUAI");
+            menu();
             break;
     }
    };
@@ -68,12 +73,18 @@ async function jawa() {
   }
 }
 
+
 let a = await rl.question("Tekan p untuk masukan kartu..\n"); //biar masukin kartunya, hehe
 if (a === "p") {
   console.log("Kartu dimasukan");
   console.clear()
   await jawa();
 }
+else {
+  console.log("masukin yang bener");
+  console.clear
+  rl.close()
+};
 
 // masih follow
 // gw mencet apaan ampe ngefollow begini, coba run lagi rip qi, i mau main, hehe
@@ -87,3 +98,4 @@ if (a === "p") {
 //coba tanya sajat:)
 //yey
 //msh follow ya apa udh ngga, follow aoa bobo yu, bole, besok tanya kk ny
+//knjewqknqkwjnekneqwjkenjnwekjnwknjjnkjnkjnkjn
