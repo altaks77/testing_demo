@@ -75,14 +75,18 @@ async function jawa() {
 }
 
 
-let a = await rl.question("Tekan p untuk masukan kartu..\n"); //biar masukin kartunya, hehe
-if (a === "p") {
-  console.log("Kartu dimasukan");
-  console.clear()
-  await jawa();
-}
-else {
-  console.log("masukin yang bener");
-  console.clear
-  rl.close()
+async function login() {
+  let a = await rl.question("Tekan p untuk masukan kartu..\n"); //biar masukin kartunya, hehe
+  if (a === "p") {
+    console.log("Kartu dimasukan");
+    console.clear()
+    await jawa();
+  }
+  else {
+    console.clear()
+    console.log("masukin yang bener");
+    await login();
+  };
 };
+
+login();
